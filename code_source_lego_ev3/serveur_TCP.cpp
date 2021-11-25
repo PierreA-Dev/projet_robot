@@ -36,16 +36,70 @@ int main()
         cout << reponse << endl;
         // Envoi de la réponse au client
         string requete;
-
 		
-		if (reponse[0] == 'M' )
-		{
-
-	            // Le robot tourne sur lui-même pendant 2s puis s'arrête
-	           requete = monRobot.changerPuissanceMoteurs(100, 0, -100);
-	           requete = monRobot.attendre(2000);
-	           requete = monRobot.changerPuissanceMoteurs(0, 0, 0);
+		       if (reponse[0] == 'Z' )
+		{           
+	           monRobot.changerPuissanceMoteurs(0, 0, 0);
+	           monRobot.changerPuissanceMoteurs(100, 0, 100);
+               monRobot.parler("Icssa rapta", true);
 		}
+
+        		if (reponse[0] == 'S' )
+		{
+	           monRobot.changerPuissanceMoteurs(0, 0, 0);
+	           monRobot.changerPuissanceMoteurs(-25, 0, -25);
+               monRobot.parler("Icssa rapta", true);
+		}
+
+           		if (reponse[0] == 'Q' )
+		{
+	           monRobot.changerPuissanceMoteurs(100, 0, -100);
+	           monRobot.changerPuissanceMoteurs(-25, 0, 25);
+               monRobot.parler("Icssa rapta", true);
+		}
+
+               	if (reponse[0] == 'D' )
+		{
+               monRobot.changerPuissanceMoteurs(0, 0, 0);
+	           monRobot.changerPuissanceMoteurs(25, 0, -25);
+               monRobot.parler("Icssa rapta", true);
+		}
+
+                      	if (reponse[0] == 'A' )
+		{
+               monRobot.changerPuissanceMoteurs(0, 0, 0);
+	           monRobot.changerPuissanceMoteurs(0, 100, 0);
+               monRobot.parler("Icssa rapta", true);
+		}
+
+                        if (reponse[0] == 'E' )
+		{
+               monRobot.changerPuissanceMoteurs(0, 0, 0);
+	           monRobot.changerPuissanceMoteurs(0, -100, 0);
+               monRobot.parler("Icssa rapta", true);
+		}
+
+                if (reponse[0] == 'T' )
+		{
+               monRobot.changerPuissanceMoteurs(0, 0, 0);
+               monRobot.parler("Icssa rapta", true);
+		}
+
+                if (reponse[0] == 'C' )
+		{
+        // Pendant 10s on affiche l'état du capteur de couleur
+        for (int i=0; i<100; i++)
+        
+            cout << "reflechie => " << monRobot.recupererLumiereReflechie() << " ";
+            cout << "ambiante => " << monRobot.recupererLumiereAmbiante() << " ";
+            cout << "code couleur => " << monRobot.recupererCouleurCode() << " ";
+            cout << "R => " << monRobot.recupererCouleurRouge() << " ";
+            cout << "V => " << monRobot.recupererCouleurVerte() << " ";
+            cout << "B => " << monRobot.recupererCouleurBleue() << " ";
+            cout << endl;
+            monRobot.attendre(100);
+        }
+
 
         send(sd_client, requete.c_str(), requete.size(), 0);
         // Fermeture de la socket client
