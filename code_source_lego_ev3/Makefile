@@ -7,7 +7,7 @@
 
 
 # Variables de compilation et déploiement
-IP_ROBOT=192.168.1.157
+IP_ROBOT=172.20.10.3
 CC=arm-linux-gnueabi-g++
 CFLAGS=-O2 -march=armv5
 CCFLAGS=-std=c++11 -D_GLIBCXX_USE_NANOSLEEP
